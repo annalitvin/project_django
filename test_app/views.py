@@ -25,7 +25,7 @@ def get_profile(request):
 
     fake = Faker(['it_IT', 'en_US', 'uk_UA'])
 
-    profile_list = [str(fake.profile(fields=['name', 'mail'])) for _ in range(100)]
+    profile_list = [fake.profile(fields=['name', 'mail']) for _ in range(100)]
     return JsonResponse({"profiles": profile_list})
 
 
