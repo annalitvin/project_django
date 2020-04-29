@@ -6,13 +6,11 @@ import json
 import string
 import random
 
-
-from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
 from faker import Faker
 
-from test_app.response import JsonUnicodeResponse
+from test_project.response import JsonUnicodeResponse
 from . import tools as t
 
 
