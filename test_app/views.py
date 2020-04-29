@@ -6,11 +6,13 @@ import json
 import string
 import random
 
+
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
 from faker import Faker
 
+from test_app.response import JsonUnicodeResponse
 from . import tools as t
 
 
@@ -26,7 +28,7 @@ def get_profile(request):
     fake = Faker(['it_IT', 'en_US', 'uk_UA'])
 
     profile_list = [fake.profile(fields=['name', 'mail']) for _ in range(100)]
-    return JsonResponse({"profiles": profile_list})
+    return JsonUnicodeResponse({"profiles": profile_list})
 
 
 def get_lib(request):
