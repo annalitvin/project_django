@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import pandas as pd
 import requests
 import json
@@ -161,18 +159,7 @@ def get_invoices(request):
         query = "SELECT InvoiceDate, BillingAddress, BillingCity, BillingState, BillingCountry, BillingPostalCode, " \
                 "Total FROM invoices WHERE BillingCity=? AND BillingCountry=? "
         invoices = t.execute_query(query, (city, country))
-        invoice_list = []
-        for invoice in invoices:
-            invoice_item = {}
-            invoice_item["InvoiceDate"] = invoice[0]
-            invoice_item["BillingAddress"] = invoice[1]
-            invoice_item["BillingCity"] = invoice[2]
-            invoice_item["BillingState"] = invoice[3]
-            invoice_item["BillingCountry"] = invoice[4]
-            invoice_item["BillingPostalCode"] = invoice[5]
-            invoice_item["Total"] = invoice[6]
-            invoice_list.append(invoice_item)
-        return JsonResponse({"invoices": invoice_list})
+        return JsonResponse({"invoices": invoices})
     return HttpResponse("Put two GET param: city and country ")
 
 
