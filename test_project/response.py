@@ -6,7 +6,8 @@ class JsonUnicodeResponse(JsonResponse):
 
     def __init__(self, data, encoder=DjangoJSONEncoder, safe=True,
                     json_dumps_params=None, **kwargs):
-        if json_dumps_params:
+
+        if json_dumps_params is None:
             json_dumps_params = {}
-        json_dumps_params = {'ensure_ascii': False}
+        json_dumps_params['ensure_ascii'] = False
         super().__init__(data, encoder, safe, json_dumps_params, **kwargs)
