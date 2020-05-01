@@ -86,11 +86,11 @@ def get_password(request):
             if isdigit not in range(0, 2):
                 return HttpResponse('Value isdigit must be 0 or 1')
             if length in range(8, 25):
-                generation_symbols = string.ascii_lowercase
+                generation_symbols = ''
                 if isdigit == 1:
                     generation_symbols += string.digits
                 elif isdigit == 0:
-                    generation_symbols = generation_symbols
+                    generation_symbols += string.ascii_lowercase
                 return HttpResponse(''.join([random.choice(generation_symbols) for _ in range(length)]))
             else:
                 return HttpResponse('Password must be between 0 to 24')
